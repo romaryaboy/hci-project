@@ -10,8 +10,7 @@
     
     <!-- Top Navigation / Header -->
     <header class="navbar">
-        <div class="logo">Дія</div>
-        <!-- Add your profile button or links here -->
+        <div class="logo">My App</div>
     </header>
 
     <!-- Main Chat Area -->
@@ -22,7 +21,6 @@
 
         <!-- Chat History -->
         <div class="chat-history">
-            <!-- Add your AI and User message bubbles here -->
             <div class="message ai-message">AI text placeholder</div>
             <div class="message user-message">User text placeholder</div>
         </div>
@@ -32,11 +30,37 @@
     <!-- Bottom Input Area -->
     <footer class="input-section">
         <div class="input-wrapper">
-            <!-- Text input and send button go here -->
             <input type="text" placeholder="Type a message...">
             <button>Send</button>
         </div>
     </footer>
 
+    // JavaScript to make the Send button work
+    <script>
+        // Get the elements we need from the page
+        const sendButton = document.querySelector('button');
+        const inputField = document.querySelector('input');
+        const chatHistory = document.querySelector('.chat-history');
+
+        // Listen for a click on the send button
+        sendButton.addEventListener('click', function() {
+            const userText = inputField.value;
+
+            // Only send if the input isn't empty
+            if (userText.trim() !== '') {
+                
+                // Create a new div element for the message
+                const newMessage = document.createElement('div');
+                newMessage.className = 'message user-message';
+                newMessage.textContent = userText;
+
+                // Add the new message to the chat container
+                chatHistory.appendChild(newMessage);
+
+                // Clear the input box so you can type the next message
+                inputField.value = '';
+            }
+        });
+    </script>
 </body>
 </html>
