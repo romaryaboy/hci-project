@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat UI Skeleton</title>
+    <title>Diia.gov.ua</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
     <!-- Top Navigation / Header -->
     <header class="navbar">
-        <div class="logo">My App</div>
+        <div class="logo">Дія</div>
     </header>
 
     <!-- Main Chat Area -->
@@ -35,30 +35,39 @@
         </div>
     </footer>
 
-    // JavaScript to make the Send button work
+          <!-- JavaScript to make the Send button work -->
     <script>
-        // Get the elements we need from the page
         const sendButton = document.querySelector('button');
         const inputField = document.querySelector('input');
         const chatHistory = document.querySelector('.chat-history');
 
-        // Listen for a click on the send button
+        // Phase 1: Listen for the Enter key inside the text box
+        inputField.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendButton.click(); // This virtually clicks the Send button for you
+            }
+        });
+
         sendButton.addEventListener('click', function() {
             const userText = inputField.value;
 
-            // Only send if the input isn't empty
             if (userText.trim() !== '') {
-                
-                // Create a new div element for the message
+                // Add the user's message
                 const newMessage = document.createElement('div');
                 newMessage.className = 'message user-message';
                 newMessage.textContent = userText;
-
-                // Add the new message to the chat container
                 chatHistory.appendChild(newMessage);
 
-                // Clear the input box so you can type the next message
+                // Clear the text box
                 inputField.value = '';
+
+                // Phase 2: Simulate an AI reply after a 1-second delay
+                setTimeout(function() {
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'message ai-message';
+                    aiMessage.textContent = "This is a simulated AI response!";
+                    chatHistory.appendChild(aiMessage);
+                }, 1000); // 1000 milliseconds = 1 second
             }
         });
     </script>
