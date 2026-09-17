@@ -3,45 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diia.gov.ua</title>
+    <title>Diia Simplified</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <!-- Top Navigation / Header -->
+    <!-- Top Navigation -->
     <header class="navbar">
-        <div class="logo">Дія</div>
+        <div class="nav-left">
+            <div class="logo">Diia</div>
+            <span>Service Catalog ▾</span>
+            <span>What is Diia</span>
+        </div>
+        <div class="nav-right">
+            <span class="register">Register</span>
+            <button class="login-btn">Log in</button>
+        </div>
     </header>
 
-    <!-- Main Chat Area -->
-    <main class="chat-container">
+    <!-- Main Centered Area -->
+    <main class="hero-container">
         
-        <!-- Welcome Message -->
-        <h1 class="greeting">Hello!</h1>
+        <h1 class="main-title">Online Government Services</h1>
 
-        <!-- Chat History -->
-        <div class="chat-history">
-            <div class="message ai-message">AI text placeholder</div>
-            <div class="message user-message">User text placeholder</div>
+        <!-- Chat History is now ABOVE the input area -->
+        <div class="chat-history"></div>
+
+        <!-- Mode Toggles (Search / AI) -->
+        <div class="mode-toggles">
+            <button class="active-toggle">Search</button>
+            <button class="inactive-toggle">Diia.AI</button>
         </div>
+
+        <!-- Input Area -->
+        <div class="input-wrapper">
+            <input type="text" placeholder="Name of service or life situation">
+            <button class="send-btn">→</button>
+        </div>
+        <p class="subtext">For example: open a sole proprietorship or Entrepreneurship</p>
 
     </main>
 
-    <!-- Bottom Input Area -->
-    <footer class="input-section">
-        <div class="input-wrapper">
-            <input type="text" placeholder="Type a message...">
-            <button>Send</button>
-        </div>
-    </footer>
-
-          <!-- JavaScript to make the Send button work -->
     <script>
-        const sendButton = document.querySelector('button');
+        const sendButton = document.querySelector('.send-btn');
         const inputField = document.querySelector('input');
         const chatHistory = document.querySelector('.chat-history');
+        
+        // 1. Select the elements you want to hide
+        const mainTitle = document.querySelector('.main-title');
+        const modeToggles = document.querySelector('.mode-toggles');
 
-        // Listen for the Enter key
         inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 sendButton.click();
@@ -52,26 +63,24 @@
             const userText = inputField.value;
 
             if (userText.trim() !== '') {
-                // Add the user's message
+                
+                // 2. Hide the title and toggles as soon as a message is sent
+                mainTitle.style.display = 'none';
+                modeToggles.style.display = 'none';
+
                 const newMessage = document.createElement('div');
                 newMessage.className = 'message user-message';
                 newMessage.textContent = userText;
                 chatHistory.appendChild(newMessage);
 
-                // Clear the text box
                 inputField.value = '';
-
-                // Scroll to bottom after user sends a message
                 chatHistory.scrollTop = chatHistory.scrollHeight;
 
-                // Simulate an AI reply
                 setTimeout(function() {
                     const aiMessage = document.createElement('div');
                     aiMessage.className = 'message ai-message';
-                    aiMessage.textContent = "This is a simulated AI response!";
+                    aiMessage.textContent = "Looking for information regarding your request...";
                     chatHistory.appendChild(aiMessage);
-
-                    // Scroll to bottom again after AI replies
                     chatHistory.scrollTop = chatHistory.scrollHeight;
                 }, 1000); 
             }

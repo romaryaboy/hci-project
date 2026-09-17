@@ -1,4 +1,4 @@
-/* 1. Basic Reset */
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,113 +6,148 @@
     font-family: sans-serif;
 }
 
-/* 2. Full-screen layout */
+/* Vibrant Gradient Background */
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* Diia's signature mint-to-white gradient */
-    background: radial-gradient(circle at bottom left, #ffffff 0%, #c4ece5 100%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* This creates the mint -> blue -> purple fade */
+    background: linear-gradient(135deg, #a8edea 0%, #a8cbf1 50%, #d4b5f9 100%);
 }
 
-/* 3. Header */
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 14px;
 }
 
-/* 4. Middle Chat Area */
-.chat-container {
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    background-color: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.login-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Center Content */
+.hero-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
     padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
+    margin-top: -50px; /* Nudges it slightly up visually */
 }
 
-.chat-history {
+.main-title {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+/* Toggle Buttons */
+.mode-toggles {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 4px;
 }
 
-.message {
-    padding: 16px 24px;
-    border-radius: 24px; /* Much rounder bubbles */
-    max-width: 70%;
-    font-size: 16px;
-    line-height: 1.5;
+.mode-toggles button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    background: transparent;
 }
 
-.ai-message {
-    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Glass effect */
-    color: #000;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    align-self: flex-start;
-    border-bottom-left-radius: 4px; /* Sharp corner pointing to AI */
+.active-toggle {
+    background-color: black !important;
+    color: white;
 }
 
-.user-message {
-    background-color: #000000; /* Solid black */
-    color: #ffffff;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px; /* Sharp corner pointing to User */
-}
-
-.input-section {
-    padding: 20px;
-    background: transparent; /* Remove the solid white footer */
-    border-top: none;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px; /* Lift it off the bottom edge */
-}
-
+/* Pill Input Field */
 .input-wrapper {
     display: flex;
     width: 100%;
     max-width: 600px;
-    background: #ffffff;
-    border-radius: 30px; /* The pill shape */
-    padding: 8px 8px 8px 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background: white;
+    border-radius: 30px;
+    padding: 5px 5px 5px 20px;
 }
 
 .input-wrapper input {
     flex: 1;
-    border: none; /* Remove the grey border */
+    border: none;
     outline: none;
-    background: transparent;
     font-size: 16px;
 }
 
-/* Remove the blue focus border, Diia keeps it clean */
-.input-wrapper input:focus {
-    outline: none; 
-}
-
-button {
-    background-color: #000000;
+.send-btn {
+    background-color: black;
     color: white;
     border: none;
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Perfect circle */
+    border-radius: 50%;
     cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 18px;
 }
 
-button:hover {
-    background-color: #333333; 
+.subtext {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+/* Chat History positioned above the input */
+.chat-history {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 350px;
+    overflow-y: auto;
+    margin-top: 10px;
+    margin-bottom: 24px; /* Adds space between the chat and the toggle buttons */
+}
+
+.message {
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: black;
+    color: white;
+    align-self: flex-end;
+}
+
+.ai-message {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    color: black;
+    align-self: flex-start;
 }
