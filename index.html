@@ -48,11 +48,25 @@
         const sendButton = document.querySelector('.send-btn');
         const inputField = document.querySelector('input');
         const chatHistory = document.querySelector('.chat-history');
-        
-        // 1. Select the elements you want to hide
         const mainTitle = document.querySelector('.main-title');
         const modeToggles = document.querySelector('.mode-toggles');
+        
+        // 1. Grab the two toggle buttons
+        const searchBtn = modeToggles.children[0];
+        const aiBtn = modeToggles.children[1];
 
+        // 2. Add click listeners to swap their classes
+        searchBtn.addEventListener('click', function() {
+            searchBtn.className = 'active-toggle';
+            aiBtn.className = 'inactive-toggle';
+        });
+
+        aiBtn.addEventListener('click', function() {
+            aiBtn.className = 'active-toggle';
+            searchBtn.className = 'inactive-toggle';
+        });
+
+        // The rest of your chat functionality remains completely unchanged
         inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 sendButton.click();
@@ -63,8 +77,6 @@
             const userText = inputField.value;
 
             if (userText.trim() !== '') {
-                
-                // 2. Hide the title and toggles as soon as a message is sent
                 mainTitle.style.display = 'none';
                 modeToggles.style.display = 'none';
 
