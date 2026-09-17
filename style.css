@@ -1,0 +1,21 @@
+/* Basic styling for all messages */
+.message {
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin-bottom: 10px;
+}
+
+/* AI gets a simple grey background on the left */
+.ai-message {
+    background-color: #e0e0e0;
+    color: black;
+    align-self: flex-start;
+}
+
+/* User gets a blue background on the right */
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
