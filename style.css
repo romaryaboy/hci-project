@@ -69,11 +69,17 @@ body {
     justify-content: center;
 }
 
-.input-wrapper {
-    display: flex;
-    width: 100%;
-    max-width: 600px;
-    gap: 10px;
+.input-wrapper input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc; /* Give it a default soft grey border */
+    border-radius: 5px; /* Soften the corners */
+    transition: border-color 0.2s ease-in-out; /* Makes the color change smooth */
+}
+
+.input-wrapper input:focus {
+    outline: none; /* Turns off the ugly default browser outline */
+    border: 2px solid #007bff; /* Adds our custom blue border instead */
 }
 
 .input-wrapper input {
@@ -90,8 +96,9 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.2s ease-in-out; /* Makes the hover effect fade in smoothly */
 }
 
 button:hover {
-    background-color: #0056b3; /* Slightly darker blue when hovering */
+    background-color: #0056b3; 
 }
