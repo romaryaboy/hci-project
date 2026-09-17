@@ -3,70 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diia Simplified</title>
+    <title>Diia.AI — Government Services</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <!-- Top Navigation -->
-    <header class="navbar">
-        <div class="nav-left">
-            <div class="logo">Diia</div>
-            <span>Service Catalog ▾</span>
-            <span>What is Diia</span>
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">Дія</div>
+            <button class="icon-btn">☰</button>
         </div>
-        <div class="nav-right">
-            <span class="register">Register</span>
-            <button class="login-btn">Log in</button>
-        </div>
-    </header>
 
-    <!-- Main Centered Area -->
-    <main class="hero-container">
+        <div class="search-bar">
+            <span>🔍</span>
+            <input type="text" placeholder="Search in chats">
+        </div>
+
+        <div class="chat-list-section">
+            <div class="section-title">PREVIOUS CHATS</div>
+            <div class="chat-item active">Government Services</div>
+        </div>
+
+        <div class="sidebar-footer">
+            <button class="icon-btn text-btn">
+                <span>❓</span> Help
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="main-content">
         
-        <h1 class="main-title">Online Government Services</h1>
+        <!-- Top Header -->
+        <header class="chat-header">
+            <button class="icon-btn">←</button>
+            <h1 class="chat-title">Government Services</h1>
+            <button class="icon-btn">✕</button>
+        </header>
 
-        <!-- Chat History is now ABOVE the input area -->
-        <div class="chat-history"></div>
+        <!-- Scrollable Messages -->
+        <div class="chat-history">
+            
+            <!-- Default AI Greeting -->
+            <div class="message ai-message">
+                <div class="text">
+                    Hello, Roman! I am Diia.AI, your personal assistant.<br><br>
+                    Roman, I remember your name. How can I help you today with government services? 😉
+                </div>
+            </div>
 
-        <!-- Mode Toggles (Search / AI) -->
-        <div class="mode-toggles">
-            <button class="active-toggle">Search</button>
-            <button class="inactive-toggle">Diia.AI</button>
         </div>
 
-        <!-- Input Area -->
-        <div class="input-wrapper">
-            <input type="text" placeholder="Name of service or life situation">
-            <button class="send-btn">→</button>
-        </div>
-        <p class="subtext">For example: open a sole proprietorship or Entrepreneurship</p>
-
+        <!-- Input Section -->
+        <footer class="input-section">
+            <div class="input-container">
+                <div class="input-wrapper blue-border">
+                    <input type="text" placeholder="How can I help?">
+                    <button class="voice-btn send-btn">→</button>
+                </div>
+                <!-- Added Disclaimer -->
+                <p class="disclaimer">The AI assistant is currently operating in open beta testing. Please verify important information on the Diia portal.</p>
+            </div>
+        </footer>
     </main>
 
     <script>
         const sendButton = document.querySelector('.send-btn');
-        const inputField = document.querySelector('input');
+        const inputField = document.querySelector('input[placeholder="How can I help?"]');
         const chatHistory = document.querySelector('.chat-history');
-        const mainTitle = document.querySelector('.main-title');
-        const modeToggles = document.querySelector('.mode-toggles');
-        
-        // 1. Grab the two toggle buttons
-        const searchBtn = modeToggles.children[0];
-        const aiBtn = modeToggles.children[1];
 
-        // 2. Add click listeners to swap their classes
-        searchBtn.addEventListener('click', function() {
-            searchBtn.className = 'active-toggle';
-            aiBtn.className = 'inactive-toggle';
-        });
-
-        aiBtn.addEventListener('click', function() {
-            aiBtn.className = 'active-toggle';
-            searchBtn.className = 'inactive-toggle';
-        });
-
-        // The rest of your chat functionality remains completely unchanged
         inputField.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 sendButton.click();
@@ -77,26 +83,28 @@
             const userText = inputField.value;
 
             if (userText.trim() !== '') {
-                mainTitle.style.display = 'none';
-                modeToggles.style.display = 'none';
-
+                // Add the user's message
                 const newMessage = document.createElement('div');
                 newMessage.className = 'message user-message';
-                newMessage.textContent = userText;
+                newMessage.innerHTML = `<div class="bubble">${userText}</div>`;
                 chatHistory.appendChild(newMessage);
 
+                // Clear input and scroll down
                 inputField.value = '';
                 chatHistory.scrollTop = chatHistory.scrollHeight;
 
+                // Simulate the AI reply after 1 second
                 setTimeout(function() {
                     const aiMessage = document.createElement('div');
                     aiMessage.className = 'message ai-message';
-                    aiMessage.textContent = "Looking for information regarding your request...";
+                    aiMessage.innerHTML = `<div class="text">Processing your request...</div>`;
                     chatHistory.appendChild(aiMessage);
+                    
                     chatHistory.scrollTop = chatHistory.scrollHeight;
                 }, 1000); 
             }
         });
     </script>
 </body>
+
 </html>
