@@ -11,7 +11,9 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #f5f5f5;
+    /* Diia's signature mint-to-white gradient */
+    background: radial-gradient(circle at bottom left, #ffffff 0%, #c4ece5 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* 3. Header */
@@ -41,64 +43,76 @@ body {
     gap: 15px;
 }
 
-/* 5. Chat Bubbles */
 .message {
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 16px 24px;
+    border-radius: 24px; /* Much rounder bubbles */
     max-width: 70%;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .ai-message {
-    background-color: #e0e0e0;
-    color: black;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Glass effect */
+    color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     align-self: flex-start;
+    border-bottom-left-radius: 4px; /* Sharp corner pointing to AI */
 }
 
 .user-message {
-    background-color: #007bff;
-    color: white;
+    background-color: #000000; /* Solid black */
+    color: #ffffff;
     align-self: flex-end;
+    border-bottom-right-radius: 4px; /* Sharp corner pointing to User */
 }
 
-/* 6. Bottom Input Area */
 .input-section {
     padding: 20px;
-    background-color: #fff;
-    border-top: 1px solid #ccc;
+    background: transparent; /* Remove the solid white footer */
+    border-top: none;
     display: flex;
+    justify-content: center;
+    padding-bottom: 40px; /* Lift it off the bottom edge */
+}
+
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 30px; /* The pill shape */
+    padding: 8px 8px 8px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.input-wrapper input {
+    flex: 1;
+    border: none; /* Remove the grey border */
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+}
+
+/* Remove the blue focus border, Diia keeps it clean */
+.input-wrapper input:focus {
+    outline: none; 
+}
+
+button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Perfect circle */
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.input-wrapper input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc; /* Give it a default soft grey border */
-    border-radius: 5px; /* Soften the corners */
-    transition: border-color 0.2s ease-in-out; /* Makes the color change smooth */
-}
-
-.input-wrapper input:focus {
-    outline: none; /* Turns off the ugly default browser outline */
-    border: 2px solid #007bff; /* Adds our custom blue border instead */
-}
-
-.input-wrapper input {
-    flex: 1;
-    padding: 10px;
-}
-
-/* Button Styling */
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease-in-out; /* Makes the hover effect fade in smoothly */
-}
-
 button:hover {
-    background-color: #0056b3; 
+    background-color: #333333; 
 }
