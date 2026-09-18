@@ -1,4 +1,4 @@
-/* 1. Basic Reset */
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     background-color: #ffffff;
 }
 
-/* 2. Left Sidebar */
+/* Left Sidebar */
 .sidebar {
     width: 280px;
     background-color: #d8f1e6; /* Soft mint green */
@@ -108,7 +108,7 @@ body {
     font-weight: 500;
 }
 
-/* 3. Main Content Area */
+/* Main Content Area */
 .main-content {
     flex: 1; /* Takes up all remaining space next to the sidebar */
     display: flex;
@@ -128,7 +128,7 @@ body {
     font-weight: 600;
 }
 
-/* 4. Chat History */
+/* Chat History */
 .chat-history {
     flex: 1;
     overflow-y: auto;
@@ -179,7 +179,7 @@ body {
     line-height: 1.6;
 }
 
-/* 5. Input Section */
+/* Input Section */
 .input-section {
     padding: 20px;
     display: flex;
